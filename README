@@ -1,0 +1,21 @@
+:: Archlinux auto-configurator script. Meant to be run from within Archlinux's live CD environment.
+
+:: Results in:
+-- Two partitions: /boot and /root
+-- EFI boot partition
+-- Root partition is LUKS encrypted
+-- Systemd-boot
+-- No swap
+-- Auto-login for daily user
+-- Passwordless SUDO for daily user
+
+!! Warning: running this script *will* wipe out your hard-drive!
+
+:: Instructions
+:: Run the following command from within live CD environment to install the base system:
+
+bash <(curl -s https://raw.githubusercontent.com/PaulTOliver/arch-orbit/master/arch-setup.sh)
+
+:: After reboot, run the following to configure the desktop environment for the current user:
+
+bash <(curl -s https://raw.githubusercontent.com/PaulTOliver/arch-orbit/master/arch-config.sh)
