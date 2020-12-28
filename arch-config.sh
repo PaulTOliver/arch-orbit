@@ -9,8 +9,10 @@ github=https://github.com/paultoliver
 echo ":: Welcome to Archlinux user configurator"
 echo ":: Installing dependencies"
 sudo pacman -S --needed --noconfirm \
+    adwaita-icon-theme \
     base-devel \
     git \
+    libxcursor \
     libxft \
     libxinerama \
     stow \
