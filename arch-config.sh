@@ -25,10 +25,10 @@ echo
 echo ":: Fetching suckless repositories"
 mkdir -p $HOME/repos
 cd $HOME/repos
-git clone $github/dmenu
-git clone $github/dotfiles
-git clone $github/dwm
-git clone $github/st
+git clone --depth 1 --single-branch --branch arch-orbital $github/dwm
+git clone --depth 1 --single-branch --branch arch-orbital $github/dmenu
+git clone --depth 1 --single-branch --branch arch-orbital $github/st
+git clone --depth 1 --single-branch --branch master $github/dotfiles
 
 echo
 echo ":: Building dwm"
