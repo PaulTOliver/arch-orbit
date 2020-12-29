@@ -22,12 +22,13 @@ sudo pacman -S --needed --noconfirm \
     xorg-xrdb
 
 echo
-echo ":: Fetching repositories"
+echo ":: Fetching suckless repositories"
 mkdir -p $HOME/repos
 cd $HOME/repos
 git clone $github/dmenu
 git clone $github/dotfiles
 git clone $github/dwm
+git clone $github/st
 
 echo
 echo ":: Building dwm"
@@ -42,6 +43,15 @@ echo
 echo ":: Building dmenu"
 cd $HOME/repos/dmenu
 git remote add upstream https://git.suckless.org/dmenu
+git checkout arch-orbital
+cp -v config.def.h config.h
+make
+sudo make install
+
+echo
+echo ":: Building st"
+cd $HOME/repos/st
+git remote add upstream https://git.suckless.org/st
 git checkout arch-orbital
 cp -v config.def.h config.h
 make
