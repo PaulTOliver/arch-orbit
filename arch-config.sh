@@ -11,6 +11,7 @@ echo ":: Installing dependencies"
 sudo pacman -S --needed --noconfirm \
     adwaita-icon-theme \
     base-devel \
+    feh \
     git \
     libxcursor \
     libxft \
