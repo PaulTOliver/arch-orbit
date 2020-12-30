@@ -24,8 +24,8 @@ sudo pacman -S --needed --noconfirm \
 
 echo
 echo ":: Fetching suckless repositories"
-mkdir -p $HOME/repos
-cd $HOME/repos
+mkdir -p $HOME/suckless
+cd $HOME/suckless
 git clone --depth 1 --single-branch --branch arch-orbital $github/dwm
 git clone --depth 1 --single-branch --branch arch-orbital $github/dmenu
 git clone --depth 1 --single-branch --branch arch-orbital $github/st
@@ -33,7 +33,7 @@ git clone --depth 1 --single-branch --branch master $github/dotfiles
 
 echo
 echo ":: Building dwm"
-cd $HOME/repos/dwm
+cd $HOME/suckless/dwm
 git remote add upstream https://git.suckless.org/dwm
 git checkout arch-orbital
 cp -v config.def.h config.h
@@ -42,7 +42,7 @@ sudo make install
 
 echo
 echo ":: Building dmenu"
-cd $HOME/repos/dmenu
+cd $HOME/suckless/dmenu
 git remote add upstream https://git.suckless.org/dmenu
 git checkout arch-orbital
 cp -v config.def.h config.h
@@ -51,7 +51,7 @@ sudo make install
 
 echo
 echo ":: Building st"
-cd $HOME/repos/st
+cd $HOME/suckless/st
 git remote add upstream https://git.suckless.org/st
 git checkout arch-orbital
 cp -v config.def.h config.h
@@ -60,5 +60,5 @@ sudo make install
 
 echo
 echo ":: Stowing dotfiles"
-cd $HOME/repos/dotfiles
+cd $HOME/suckless/dotfiles
 stow -t $HOME xorg
