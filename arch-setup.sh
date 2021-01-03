@@ -78,7 +78,7 @@ mount $boot /mnt/boot
 
 echo
 echo ":: Installing base system"
-pacstrap /mnt base e2fsprogs intel-ucode linux sudo
+pacstrap /mnt base e2fsprogs intel-ucode linux networkmanager sudo
 genfstab -U /mnt >> /mnt/etc/fstab
 cat <<-EOT | arch-chroot /mnt /bin/sh
 	echo
@@ -104,16 +104,8 @@ cat <<-EOT | arch-chroot /mnt /bin/sh
 	EOF
 
 	echo
-	echo ":: Setting up wired network interface"
-	cat <<-EOF > /etc/systemd/network/50-dhcp.network
-		[Match]
-		Name=en*
-
-		[Network]
-		DHCP=yes
-	EOF
-	systemctl enable systemd-networkd.service
-	systemctl enable systemd-resolved.service
+	echo ":: Setting up network manager"
+	systemctl enable NetworkManager.service
 
 	echo
 	echo ":: Configuring user $username"
