@@ -110,8 +110,8 @@ cat <<-EOT | arch-chroot /mnt /bin/sh
 	echo
 	echo ":: Configuring user $username"
 	useradd -m $username
-	echo "root:$password" | chpasswd
-	echo "$username:$password" | chpasswd
+	echo 'root:$password' | chpasswd
+	echo '$username:$password' | chpasswd
 	sed -i "/^root/a $username ALL=(ALL:ALL) NOPASSWD:ALL" /etc/sudoers
 
 	echo
